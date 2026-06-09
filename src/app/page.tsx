@@ -1,4 +1,5 @@
 import { About } from "@/components/About";
+import { ContactSection } from "@/components/ContactSection";
 import { CtaSection } from "@/components/CtaSection";
 import { Features } from "@/components/Features";
 import { Footer } from "@/components/Footer";
@@ -23,6 +24,7 @@ export default function Home() {
         <HowItWorks />
         <Pricing />
         <About />
+        <ContactSection />
         <CtaSection />
       </main>
       <Footer />

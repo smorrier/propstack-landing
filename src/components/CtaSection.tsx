@@ -25,7 +25,7 @@ export function CtaSection() {
             <Button href={APP_URL} size="lg">
               Start Free Trial
             </Button>
-            <Button href="mailto:hello@propstack.ca" variant="ghost" size="lg">
+            <Button href="#contact" variant="ghost" size="lg">
               Talk to Us
             </Button>
           </div>

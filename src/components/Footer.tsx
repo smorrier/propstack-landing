@@ -11,7 +11,7 @@ const footerLinks = {
   Company: [
     { href: "#about", label: "About" },
     { href: "#about", label: "Founders" },
-    { href: "mailto:hello@propstack.ca", label: "Contact" },
+    { href: "#contact", label: "Contact" },
   ],
 };
 
