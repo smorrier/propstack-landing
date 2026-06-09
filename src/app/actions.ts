@@ -1,6 +1,6 @@
 "use server";
 
-import { CONTACT_EMAIL } from "@/lib/constants";
+import { CONTACT_EMAILS } from "@/lib/constants";
 
 export type ContactFormState = {
   success: boolean;
@@ -54,7 +54,7 @@ export async function submitContactForm(
       },
       body: JSON.stringify({
         from: process.env.CONTACT_FROM_EMAIL ?? "PropStack <onboarding@resend.dev>",
-        to: [CONTACT_EMAIL],
+        to: CONTACT_EMAILS,
         reply_to: email,
         subject: `[Contact] ${subject}`,
         text: `Name: ${name}\nEmail: ${email}\n\n${body}`,
