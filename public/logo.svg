@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 16 214 56" width="214" height="56">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap');
+    </style>
+  </defs>
+  <text x="14" y="54" font-family="Inter, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-weight="700" font-size="38" letter-spacing="-0.5">
+    <tspan fill="#ffffff">Prop</tspan><tspan fill="#0D9488">Stack</tspan>
+  </text>
+</svg>
