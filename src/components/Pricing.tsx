@@ -12,7 +12,7 @@ const plans = [
       "For investors just getting started. Full calculator access, no credit card needed.",
     features: [
       { text: "Multi-strategy calculator", enabled: true },
-      { text: "5 deal analyses per month", enabled: true },
+      { text: "4 deal profiles", enabled: true },
       { text: "Buy & Hold, Flip, BRRRR", enabled: true },
       { text: "Side-by-side comparison", enabled: true },
       { text: "Portfolio dashboard", enabled: false },
@@ -31,7 +31,7 @@ const plans = [
     description:
       "For active investors managing a growing portfolio. Unlimited analysis and full platform access.",
     features: [
-      { text: "Unlimited deal analyses", enabled: true },
+      { text: "Unlimited deals", enabled: true },
       { text: "Multi-strategy calculator", enabled: true },
       { text: "Portfolio dashboard", enabled: true },
       { text: "Deal tracking (end-to-end)", enabled: true },
@@ -54,11 +54,10 @@ export function Pricing() {
           {plans.map((plan) => (
             <div
               key={plan.tier}
-              className={`relative flex flex-col rounded-2xl border p-9 ${
-                plan.featured
+              className={`relative flex flex-col rounded-2xl border p-9 ${plan.featured
                   ? "border-brand-blue bg-gradient-to-br from-brand-blue/12 to-canvas"
                   : "border-white/8 bg-canvas"
-              }`}
+                }`}
             >
               {plan.tag && (
                 <div className="absolute -top-3 left-7 rounded-full bg-brand-blue px-3 py-1 text-[11px] font-bold tracking-[0.1em] text-white uppercase">
