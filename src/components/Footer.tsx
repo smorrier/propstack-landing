@@ -4,14 +4,19 @@ import { APP_URL } from "@/lib/constants";
 
 const footerLinks = {
   Product: [
-    { href: "#features", label: "Features" },
+    { href: "/#features", label: "Features" },
     { href: APP_URL, label: "Calculator" },
-    { href: "#pricing", label: "Pricing" },
+    { href: "/#pricing", label: "Pricing" },
+  ],
+  Guides: [
+    { href: "/learn", label: "All guides" },
+    { href: "/learn/what-is-dscr", label: "What is DSCR?" },
+    { href: "/learn/cap-rate-vs-cash-on-cash", label: "Cap rate vs. cash-on-cash" },
   ],
   Company: [
-    { href: "#about", label: "About" },
-    { href: "#about", label: "Founders" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#about", label: "About" },
+    { href: "/#about", label: "Founders" },
+    { href: "/#contact", label: "Contact" },
   ],
 };
 
@@ -19,7 +24,7 @@ export function Footer() {
   return (
     <footer className="border-t border-white/8 bg-canvas pt-15 pb-9">
       <div className="mx-auto max-w-[1160px] px-6">
-        <div className="mb-12 grid gap-12 md:grid-cols-[2fr_1fr_1fr]">
+        <div className="mb-12 grid gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
           <div>
             <Image
               src="/logo.svg"
