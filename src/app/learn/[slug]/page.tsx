@@ -5,7 +5,9 @@ import { Nav } from "@/components/Nav";
 import { ArticleView } from "@/components/learn/ArticleView";
 import { SITE_URL } from "@/lib/constants";
 import { LEARN_ARTICLES, getLearnArticle } from "@/lib/learn/articles";
-import { learnArticleJsonLd, learnArticlePath, serializeJsonLd } from "@/lib/learn/schema";
+import { authorPath } from "@/lib/learn/authors";
+import { learnArticleJsonLd, learnArticlePath } from "@/lib/learn/schema";
+import { serializeJsonLd } from "@/lib/schema";
 
 type Params = { slug: string };
 
@@ -23,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     title: article.seoTitle,
     description: article.description,
     keywords: article.keywords,
-    authors: [{ name: article.author.name, url: article.author.url }],
+    authors: [{ name: article.author.name, url: authorPath(article.author.slug) }],
     alternates: { canonical: path },
     openGraph: {
       type: "article",

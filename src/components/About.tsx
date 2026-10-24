@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { MICHAEL_SEDLEZKY, SEAN_MORRIER, authorPath } from "@/lib/learn/authors";
 import { SectionHeader } from "./ui/SectionHeader";
 
 const founders = [
@@ -9,6 +11,7 @@ const founders = [
       "After years of investing across multiple platforms, I found myself constantly juggling tools that didn't talk to each other. The data was scattered, the workflow was inconsistent, and nothing was built the way investors actually think. I wanted to consolidate everything into one space — and give investors the flexibility to actually work with their numbers.",
     image: "/michael-sedlezky.jpg",
     initials: null,
+    href: authorPath(MICHAEL_SEDLEZKY.slug),
   },
   {
     name: "Sean Morrier",
@@ -17,6 +20,7 @@ const founders = [
       "When I purchased my first property, I was struck by how fragmented and overcomplicated the process was. There was no clear solution for investors who were just getting started. I wanted to change that — so I applied my technical background to the problem, combined it with Michael's hands-on real estate experience, and built the tool I wished had existed from day one.",
     image: "/sean-morrier.png",
     initials: null,
+    href: authorPath(SEAN_MORRIER.slug),
   },
 ];
 
@@ -45,9 +49,9 @@ export function About() {
                 </div>
               )}
               <div className="flex flex-col justify-center px-6 py-7">
-                <div className="mb-0.5 text-base font-bold text-white">
+                <Link href={founder.href} className="mb-0.5 text-base font-bold text-white hover:text-accent-blue">
                   {founder.name}
-                </div>
+                </Link>
                 <div className="mb-3.5 text-[0.8rem] text-brand-teal">
                   {founder.role}
                 </div>

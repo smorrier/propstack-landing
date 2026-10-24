@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SITE_URL } from "@/lib/constants";
+import { SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -8,8 +8,7 @@ export const metadata: Metadata = {
     default: "PropStack — Close Deals Faster. Manage Smarter.",
     template: "%s | PropStack",
   },
-  description:
-    "The all-in-one calculator and portfolio platform for modern real estate investors.",
+  description: SITE_DESCRIPTION,
 };
 
 export default function RootLayout({
@@ -18,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-CA">
       <body className="min-h-screen antialiased">{children}</body>
     </html>
   );

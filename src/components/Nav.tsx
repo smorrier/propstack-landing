@@ -19,7 +19,7 @@ export function Nav() {
           <Link href="/" className="flex shrink-0 items-center gap-2.5">
             <Image
               src="/logo.svg"
-              alt="Prop Stack"
+              alt="PropStack"
               width={214}
               height={54}
               className="h-[54px] w-auto"
