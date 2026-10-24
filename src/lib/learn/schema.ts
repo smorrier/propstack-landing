@@ -1,4 +1,4 @@
-import { SITE_NAME } from '@/lib/constants';
+import { ORGANIZATION_REF, personJsonLd } from '@/lib/schema';
 import type { LearnArticle } from './types';
 
 export function learnArticlePath(slug: string): string {
@@ -15,23 +15,18 @@ export function learnArticleJsonLd(article: LearnArticle, baseUrl: string) {
       headline: article.title,
       description: article.description,
       url,
-      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-      image: `${baseUrl}/opengraph-image`,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': url,
+        ...(article.reviewedBy && { reviewedBy: personJsonLd(article.reviewedBy) }),
+      },
+      image: `${url}/opengraph-image`,
       datePublished: article.publishedAt,
       dateModified: article.updatedAt,
       inLanguage: 'en-CA',
       keywords: article.keywords.join(', '),
-      author: {
-        '@type': 'Person',
-        name: article.author.name,
-        jobTitle: article.author.role,
-        ...(article.author.url && { url: article.author.url }),
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: SITE_NAME,
-        url: baseUrl,
-      },
+      author: personJsonLd(article.author),
+      publisher: ORGANIZATION_REF,
       citation: article.sources.map((s) => s.url),
     },
     {
@@ -54,9 +49,4 @@ export function learnArticleJsonLd(article: LearnArticle, baseUrl: string) {
     });
   }
   return { '@context': 'https://schema.org', '@graph': graph };
-}
-
-/** JSON for a `<script type="application/ld+json">`, with `<` escaped so content can't close the tag. */
-export function serializeJsonLd(data: unknown): string {
-  return JSON.stringify(data).replace(/</g, '\\u003c');
 }

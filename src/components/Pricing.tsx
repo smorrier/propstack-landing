@@ -1,4 +1,4 @@
-import { APP_URL } from "@/lib/constants";
+import { APP_URL, PRICE_CURRENCY, PRO_MONTHLY_PRICE } from "@/lib/constants";
 import { SectionHeader } from "./ui/SectionHeader";
 import { Button } from "./ui/Button";
 
@@ -26,8 +26,8 @@ const plans = [
     tier: "Pro",
     tierClass: "text-accent-blue",
     tag: "Most Popular",
-    price: "$25",
-    period: "/ month",
+    price: `$${PRO_MONTHLY_PRICE}`,
+    period: `${PRICE_CURRENCY} / month`,
     description:
       "For active investors managing a growing portfolio. Unlimited analysis and full platform access.",
     features: [

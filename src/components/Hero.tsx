@@ -1,22 +1,6 @@
 import { APP_URL } from "@/lib/constants";
 import { Button } from "./ui/Button";
 
-function PlayIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <polygon points="10 8 16 12 10 16 10 8" />
-    </svg>
-  );
-}
-
 const snapshotStats = [
   { title: "Total Value", value: "$4.2M", teal: true, delta: "▲ +12% this year" },
   { title: "Active Listings", value: "23", delta: "▲ +3 new this month" },
@@ -53,11 +37,14 @@ export function Hero() {
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div>
             <h1 className="animate-fade-up-delay-1 mb-2 text-[clamp(2.4rem,5vw,3.6rem)] leading-[1.1] font-extrabold text-white">
+              <span className="mb-4 block text-[11px] leading-normal font-semibold tracking-[0.12em] text-brand-teal uppercase">
+                Rental property calculator for Canadian investors
+              </span>
               Close Deals Faster.
               <span className="block text-brand-teal">Manage Smarter.</span>
             </h1>
             <p className="animate-fade-up-delay-2 mt-5 mb-9 max-w-[480px] text-[1.15rem] text-muted">
-              The all-in-one calculator and portfolio platform for modern real
+              The all-in-one calculator and portfolio platform for Canadian real
               estate investors. Run every strategy. Compare every deal. Know
               exactly what to do next.
             </p>
@@ -66,8 +53,7 @@ export function Hero() {
                 Start Free Trial
               </Button>
               <Button href="#how-it-works" variant="ghost" size="lg">
-                <PlayIcon />
-                Watch Demo
+                See How It Works
               </Button>
             </div>
           </div>

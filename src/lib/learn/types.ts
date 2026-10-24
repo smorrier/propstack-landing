@@ -1,10 +1,16 @@
 import type { ReactNode } from 'react';
 
 export interface LearnAuthor {
+  /** URL segment for the author's page at /authors/[slug]. */
+  slug: string;
   name: string;
   role: string;
-  /** Public profile (LinkedIn, personal site). Feeds the Person schema's `url`. */
-  url?: string;
+  /** Path under /public. */
+  image: string;
+  /** Plain-text paragraphs for the author page. Keep the first to one sentence: it is also the meta and Person schema description. */
+  bio: string[];
+  /** Public profiles (LinkedIn, personal site). Feeds the Person schema's `sameAs`. */
+  sameAs: string[];
 }
 
 /** One H2 section. Keep each self-contained (about 120–180 words) and lead with the answer. */
@@ -42,6 +48,8 @@ export interface LearnArticle {
   publishedAt: string;
   updatedAt: string;
   author: LearnAuthor;
+  /** Set only once this person has actually reviewed the guide. */
+  reviewedBy?: LearnAuthor;
   readingMinutes: number;
   keywords: string[];
   sections: LearnSection[];

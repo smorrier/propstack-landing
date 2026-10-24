@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 import { SectionHeader } from "./ui/SectionHeader";
 
 type StrategyId = "buyhold" | "flip" | "brrrr";
@@ -77,7 +77,20 @@ const strategies: Record<
 
 export function Strategies() {
   const [activeTab, setActiveTab] = useState<StrategyId>("buyhold");
-  const strategy = strategies[activeTab];
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  function handleTabKeyDown(event: KeyboardEvent, index: number) {
+    let next: number;
+    if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+    else if (event.key === "ArrowLeft")
+      next = (index - 1 + tabs.length) % tabs.length;
+    else if (event.key === "Home") next = 0;
+    else if (event.key === "End") next = tabs.length - 1;
+    else return;
+    event.preventDefault();
+    setActiveTab(tabs[next].id);
+    tabRefs.current[next]?.focus();
+  }
 
   return (
     <section className="bg-canvas py-24" id="calculator">
@@ -89,60 +102,92 @@ export function Strategies() {
         />
 
         <div className="mx-auto mt-12 max-w-[800px]">
-          <div className="mb-10 flex gap-1 rounded-[10px] bg-white/4 p-1">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 rounded-[7px] border-none px-4 py-2.5 text-sm font-semibold transition-all duration-[180ms] ${
-                  activeTab === tab.id
-                    ? "bg-brand-blue text-white"
-                    : "bg-transparent text-muted"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+          <div
+            role="tablist"
+            aria-label="Investment strategy"
+            className="mb-10 flex gap-1 rounded-[10px] bg-white/4 p-1"
+          >
+            {tabs.map((tab, index) => {
+              const selected = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  ref={(el) => {
+                    tabRefs.current[index] = el;
+                  }}
+                  type="button"
+                  role="tab"
+                  id={`strategy-tab-${tab.id}`}
+                  aria-selected={selected}
+                  aria-controls={`strategy-panel-${tab.id}`}
+                  tabIndex={selected ? 0 : -1}
+                  onClick={() => setActiveTab(tab.id)}
+                  onKeyDown={(event) => handleTabKeyDown(event, index)}
+                  className={`flex-1 rounded-[7px] border-none px-4 py-2.5 text-sm font-semibold transition-all duration-[180ms] ${
+                    selected
+                      ? "bg-brand-blue text-white"
+                      : "bg-transparent text-muted"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
           </div>
 
-          <div className="grid items-start gap-12 lg:grid-cols-2">
-            <div>
-              <p className="mb-6 text-sm text-muted">{strategy.description}</p>
-              <div className="grid grid-cols-2 gap-4">
-                {strategy.metrics.map((metric) => (
-                  <div
-                    key={metric.label}
-                    className="rounded-[10px] border border-white/8 bg-midnight px-5 py-4"
-                  >
-                    <div className="text-[11px] tracking-[0.08em] text-muted uppercase">
-                      {metric.label}
-                    </div>
-                    <div
-                      className={`mt-1 text-2xl font-bold ${metric.highlight ? "text-positive" : "text-brand-teal"}`}
-                    >
-                      {metric.value}
+          {/* All panels are rendered so every strategy's copy is in the server HTML; inactive ones are hidden. */}
+          {tabs.map((tab) => {
+            const strategy = strategies[tab.id];
+            return (
+              <div
+                key={tab.id}
+                role="tabpanel"
+                id={`strategy-panel-${tab.id}`}
+                aria-labelledby={`strategy-tab-${tab.id}`}
+                hidden={activeTab !== tab.id}
+              >
+                <div className="grid items-start gap-12 lg:grid-cols-2">
+                  <div>
+                    <p className="mb-6 text-sm text-muted">
+                      {strategy.description}
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                      {strategy.metrics.map((metric) => (
+                        <div
+                          key={metric.label}
+                          className="rounded-[10px] border border-white/8 bg-midnight px-5 py-4"
+                        >
+                          <div className="text-[11px] tracking-[0.08em] text-muted uppercase">
+                            {metric.label}
+                          </div>
+                          <div
+                            className={`mt-1 text-2xl font-bold ${metric.highlight ? "text-positive" : "text-brand-teal"}`}
+                          >
+                            {metric.value}
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="mb-3 text-sm font-semibold tracking-[0.08em] text-muted uppercase">
-                Strategy Inputs
-              </h3>
-              <div className="flex flex-col gap-2">
-                {strategy.inputs.map((input) => (
-                  <div
-                    key={input}
-                    className="flex items-center gap-2.5 text-sm text-muted before:h-1.5 before:w-1.5 before:shrink-0 before:rounded-full before:bg-brand-teal before:content-['']"
-                  >
-                    {input}
+                  <div>
+                    <h3 className="mb-3 text-sm font-semibold tracking-[0.08em] text-muted uppercase">
+                      Strategy Inputs
+                    </h3>
+                    <div className="flex flex-col gap-2">
+                      {strategy.inputs.map((input) => (
+                        <div
+                          key={input}
+                          className="flex items-center gap-2.5 text-sm text-muted before:h-1.5 before:w-1.5 before:shrink-0 before:rounded-full before:bg-brand-teal before:content-['']"
+                        >
+                          {input}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-          </div>
+            );
+          })}
 
           <div className="mt-8 rounded-xl border border-brand-teal/30 bg-midnight p-6">
             <div className="mb-4 text-[11px] font-bold tracking-[0.1em] text-brand-teal uppercase">

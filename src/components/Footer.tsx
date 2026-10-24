@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { APP_URL } from "@/lib/constants";
+import { MICHAEL_SEDLEZKY, SEAN_MORRIER, authorPath } from "@/lib/learn/authors";
 
 const footerLinks = {
   Product: [
@@ -15,7 +16,8 @@ const footerLinks = {
   ],
   Company: [
     { href: "/#about", label: "About" },
-    { href: "/#about", label: "Founders" },
+    { href: authorPath(SEAN_MORRIER.slug), label: SEAN_MORRIER.name },
+    { href: authorPath(MICHAEL_SEDLEZKY.slug), label: MICHAEL_SEDLEZKY.name },
     { href: "/#contact", label: "Contact" },
   ],
 };
@@ -28,7 +30,7 @@ export function Footer() {
           <div>
             <Image
               src="/logo.svg"
-              alt="Prop Stack"
+              alt="PropStack"
               width={214}
               height={44}
               className="h-11 w-auto"
@@ -41,9 +43,9 @@ export function Footer() {
           </div>
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="mb-4 text-[0.8rem] font-bold tracking-[0.1em] text-muted uppercase">
+              <p className="mb-4 text-[0.8rem] font-bold tracking-[0.1em] text-muted uppercase">
                 {title}
-              </h4>
+              </p>
               <ul className="flex flex-col gap-2.5">
                 {links.map((link) => (
                   <li key={link.label}>

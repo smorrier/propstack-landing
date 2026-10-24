@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/Label";
 import { LEARN_PROSE } from "@/components/learn/blocks";
 import { TRY_URL } from "@/lib/constants";
 import { getLearnArticle } from "@/lib/learn/articles";
+import { authorPath } from "@/lib/learn/authors";
 import { learnArticlePath } from "@/lib/learn/schema";
 import type { LearnArticle } from "@/lib/learn/types";
 
@@ -39,7 +40,20 @@ export function ArticleView({ article }: { article: LearnArticle }) {
         </h1>
         <p className="mt-5 text-lg text-muted text-pretty">{article.description}</p>
         <p className="mt-5 text-sm text-muted">
-          By <span className="font-semibold text-[#e2e8f0]">{article.author.name}</span>, {article.author.role}
+          By{" "}
+          <Link href={authorPath(article.author.slug)} rel="author" className="font-semibold text-[#e2e8f0] hover:text-white">
+            {article.author.name}
+          </Link>
+          , {article.author.role}
+          {article.reviewedBy && (
+            <>
+              <span aria-hidden> · </span>
+              Reviewed by{" "}
+              <Link href={authorPath(article.reviewedBy.slug)} className="font-semibold text-[#e2e8f0] hover:text-white">
+                {article.reviewedBy.name}
+              </Link>
+            </>
+          )}
           <span aria-hidden> · </span>
           {updated ? "Updated " : "Published "}
           <time dateTime={shownDate}>{formatLearnDate(shownDate)}</time>
