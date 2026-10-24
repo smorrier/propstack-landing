@@ -20,7 +20,7 @@ export function learnArticleJsonLd(article: LearnArticle, baseUrl: string) {
         '@id': url,
         ...(article.reviewedBy && { reviewedBy: personJsonLd(article.reviewedBy) }),
       },
-      image: `${baseUrl}/opengraph-image`,
+      image: `${url}/opengraph-image`,
       datePublished: article.publishedAt,
       dateModified: article.updatedAt,
       inLanguage: 'en-CA',

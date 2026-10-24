@@ -30,8 +30,16 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     title: author.name,
     description,
     alternates: { canonical: path },
-    openGraph: { type: "profile", title: socialTitle, description, url: path, siteName: "PropStack", locale: "en_CA" },
-    twitter: { card: "summary", title: socialTitle, description },
+    openGraph: {
+      type: "profile",
+      title: socialTitle,
+      description,
+      url: path,
+      siteName: "PropStack",
+      locale: "en_CA",
+      images: [{ url: author.image, alt: author.name }],
+    },
+    twitter: { card: "summary", title: socialTitle, description, images: [{ url: author.image, alt: author.name }] },
   };
 }
 
