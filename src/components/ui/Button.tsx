@@ -2,7 +2,7 @@ import Link from "next/link";
 import { type ReactNode } from "react";
 
 type ButtonVariant = "primary" | "ghost" | "teal";
-type ButtonSize = "default" | "lg";
+type ButtonSize = "default" | "lg" | "compact";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
@@ -15,6 +15,7 @@ const variantClasses: Record<ButtonVariant, string> = {
 const sizeClasses: Record<ButtonSize, string> = {
   default: "px-7 py-3.5 text-[0.95rem]",
   lg: "px-9 py-4 text-base",
+  compact: "px-4 py-2.5 text-sm md:px-7 md:py-3.5 md:text-[0.95rem]",
 };
 
 type ButtonProps = {
@@ -37,7 +38,7 @@ export function Button({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-[180ms] ${variantClasses[variant]} ${sizeClasses[size]} ${pulse ? "animate-pulse-ring" : ""} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-semibold transition-all duration-[180ms] ${variantClasses[variant]} ${sizeClasses[size]} ${pulse ? "animate-pulse-ring" : ""} ${className}`}
     >
       {children}
     </Link>

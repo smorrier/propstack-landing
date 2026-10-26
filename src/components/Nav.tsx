@@ -15,14 +15,14 @@ export function Nav() {
   return (
     <nav className="sticky top-0 z-100 border-b border-white/8 bg-midnight/92 backdrop-blur-2xl">
       <div className="mx-auto max-w-[1160px] px-6">
-        <div className="flex h-[68px] items-center gap-12">
+        <div className="flex h-[68px] items-center gap-4 md:gap-12">
           <Link href="/" className="flex shrink-0 items-center gap-2.5">
             <Image
               src="/logo.svg"
               alt="PropStack"
               width={214}
               height={54}
-              className="h-[54px] w-auto"
+              className="h-10 w-auto md:h-[54px]"
               priority
             />
           </Link>
@@ -38,8 +38,10 @@ export function Nav() {
               </li>
             ))}
           </ul>
-          <div className="ml-auto">
-            <Button href={APP_URL}>Get started</Button>
+          <div className="ml-auto shrink-0">
+            <Button href={APP_URL} size="compact">
+              Get started
+            </Button>
           </div>
         </div>
       </div>
