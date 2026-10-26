@@ -25,6 +25,12 @@ const nextConfig: NextConfig = {
         destination: `${APP_URL}/:section/:rest*`,
         permanent: true,
       },
+      // The app's old CMHC calculator page (removed) is still indexed; this guide covers the same topic.
+      {
+        source: "/cmhc-calculator",
+        destination: "/learn/cmhc-mli-select-explained",
+        permanent: true,
+      },
     ];
   },
   async headers() {
