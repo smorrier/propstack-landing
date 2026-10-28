@@ -25,6 +25,12 @@ const nextConfig: NextConfig = {
         destination: `${APP_URL}/:section/:rest*`,
         permanent: true,
       },
+      // Social posts link to this slug; the guide lives at /learn/gross-rent-multiplier.
+      {
+        source: "/learn/what-is-a-good-gross-rent-multiplier",
+        destination: "/learn/gross-rent-multiplier",
+        permanent: true,
+      },
       // The app's old CMHC calculator page (removed) is still indexed; this guide covers the same topic.
       {
         source: "/cmhc-calculator",
