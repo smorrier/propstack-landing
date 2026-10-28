@@ -12,24 +12,33 @@ import type { LearnArticle } from '../types';
  *   At a 5.5% cap: A 1,946,182 vs B 1,690,182 (≈ 256,000 apart) with the same GRM.
  * Rent uplift: 2 units +$200/mo → 4,800/yr. GRM: 4,800 × 11.61 = 55,714; minus 2 × 8,000 = 39,714 net.
  *   Cap rate method: NOI +4,800 − 3% vacancy 144 − 4% management 192 = 4,464 ÷ 5.489% = 81,323.
+ * City GRMs are derived, not observed: CBRE Q2 2026 low-rise Class B cap rate ranges divided into NOI ÷ gross rent of
+ * 63.7% (this example's margin): GRM ≈ 0.637 ÷ cap rate.
+ *   Vancouver 3.75–4.75% → 13.4–17.0 (mid 15.0) | Toronto 4.15–5.15% → 12.4–15.3 (mid 13.7)
+ *   Montreal 4.25–4.50% → 14.2–15.0 (mid 14.6) | Calgary 5.00–5.50% → 11.6–12.7 (mid 12.1)
+ *   At a 55% margin: Van 11.6–14.7, Tor 10.7–13.3, Mtl 12.2–12.9, Cgy 10.0–11.0. At 70%: Van 14.7–18.7, Tor 13.6–16.9, Mtl 15.6–16.5, Cgy 12.7–14.0.
+ * Price of the $168,000-rent building at each mid GRM: Van 2,520,000, Tor 2,301,600, Mtl 2,452,800, Cgy 2,032,800.
+ * Toronto 8-plex at 2,700,000 → GRM 16.1. Vancouver at 13.4 → 2.25M, at 17.0 → 2.86M. Vancouver 75% loan at 4.9%/25 yr
+ * (constant 6.91%) vs 4.25% cap rate → DSCR ≈ 0.82.
  */
 export const grossRentMultiplierArticle: LearnArticle = {
   slug: 'gross-rent-multiplier',
-  title: 'Gross Rent Multiplier (GRM): Formula, Examples and Limits',
+  title: 'What Is a Good Gross Rent Multiplier (GRM)? Formula and Canadian City Benchmarks',
   shortTitle: 'Gross rent multiplier',
-  seoTitle: 'Gross Rent Multiplier (GRM) Explained',
+  seoTitle: 'Good Gross Rent Multiplier by Canadian City',
   description:
-    'GRM is a property’s price divided by its gross annual rent. Learn the formula, how to use it to screen deals and value rent increases, and where it misleads.',
+    'A good GRM is a low one for your city: about 12 in Calgary, 14 in Toronto, 15 in Montréal and Vancouver. See the formula, city ranges and the cap rate link.',
   summary: [
     'The gross rent multiplier (GRM) is a property’s price divided by its gross annual rent. A lower GRM means you pay less for each dollar of rent.',
-    'An 8-unit building priced at $1,950,000 with $168,000 of annual rent has a GRM of 11.6.',
+    'There is no single good GRM in Canada. Implied by CBRE’s Q2 2026 cap rates (derived, not observed sales), multiplex GRMs are about 12 in Calgary, 14 in Toronto and 15 in Montréal and Vancouver.',
+    'An 8-unit building priced at $1,950,000 with $168,000 of annual rent has a GRM of 11.6, which is cheap for Vancouver and Montréal and about fair for Calgary.',
     'GRM ignores vacancy and operating expenses, so two buildings with the same GRM can have very different cap rates and values.',
     'GRM is best for quick screening and for estimating what a rent increase adds to value; use NOI and cap rate before you make an offer.',
   ],
   publishedAt: '2026-10-24',
-  updatedAt: '2026-10-24',
+  updatedAt: '2026-10-28',
   author: SEAN_MORRIER,
-  readingMinutes: 6,
+  readingMinutes: 9,
   keywords: [
     'gross rent multiplier',
     'GRM',
@@ -38,6 +47,12 @@ export const grossRentMultiplierArticle: LearnArticle = {
     'gross income multiplier',
     'GRM real estate Canada',
     'rent multiplier calculator',
+    'what is a good gross rent multiplier',
+    'good GRM Toronto',
+    'good GRM Vancouver',
+    'good GRM Calgary',
+    'good GRM Montreal',
+    'gross rent multiplier by city Canada',
   ],
   sections: [
     {
@@ -62,6 +77,178 @@ export const grossRentMultiplierArticle: LearnArticle = {
             GRM is popular because it needs only two numbers that are in almost every listing: the price and the rent.
             You can calculate it in your head while scrolling listings, long before you have the tax bill or a list of
             utility costs.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'good-grm',
+      title: 'What is a good gross rent multiplier?',
+      body: (
+        <>
+          <p>
+            <strong>
+              A good gross rent multiplier is a low one for your city. Implied by CBRE’s Q2 2026 cap rates, multiplex
+              GRMs are about 12 in Calgary, 14 in Toronto and 15 in Montréal and Vancouver.
+            </strong>{' '}
+            There is no single Canadian number, because GRMs vary widely by city and building type. Markets with low
+            cap rates, such as Vancouver, Toronto and Montréal, have high GRMs; markets with higher cap rates, such as
+            Calgary, have lower ones. The next section breaks it down by city.
+          </p>
+          <p>
+            Rules of thumb such as “under 10 is good” come from markets and eras with higher cap rates. Applied to a
+            city where buildings trade at a 4.5% cap rate, they would rule out almost every listing. A better approach
+            is to work out the GRM of recent sales of similar buildings nearby and compare against that.
+          </p>
+          <p>
+            A low GRM is not automatically a bargain. It can mean high expenses, an older building that needs work,
+            weak demand or rents that are unusually high and may not last. Always ask why a building is cheaper per
+            dollar of rent than its neighbours.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'grm-by-city',
+      title: 'GRM by city: Toronto, Vancouver, Calgary and Montréal',
+      body: (
+        <>
+          <p>
+            <strong>
+              GRM climbs as cap rates fall: the cities where buyers accept the lowest cap rates, Vancouver, Toronto and
+              Montréal, have multiples around 14 to 15, while Calgary sits near 12.
+            </strong>{' '}
+            Buyers pay more per dollar of rent where land and demand are more expensive.
+          </p>
+          <p>
+            Brokers rarely publish GRM, so these figures are <strong>derived</strong>, not observed sale data. They
+            take CBRE’s Q2 2026 cap rate range for low-rise Class B apartments (the closest category to a multiplex)
+            and convert it with a simple relationship: GRM ≈ NOI as a share of gross rent ÷ cap rate. We use 63.7%, the
+            ratio from our 8-unit example (NOI of $107,040 on $168,000 of gross rent). CBRE’s survey skews to larger,
+            institutional-quality buildings, so small multiplexes can trade at different multiples. Data as of Q2 2026;
+            we recalculate when CBRE publishes each quarter.
+          </p>
+          <TableWrap>
+            <table>
+              <caption>Implied GRM, low-rise Class B multifamily, Q2 2026</caption>
+              <thead>
+                <tr>
+                  <th>City</th>
+                  <th className="text-right">Cap rate (CBRE)</th>
+                  <th className="text-right">Implied GRM range</th>
+                  <th className="text-right">Midpoint</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Calgary</td><td className="text-right">5.00%–5.50%</td><td className="text-right">11.6–12.7</td><td className="text-right">12.1</td></tr>
+                <tr><td>Toronto</td><td className="text-right">4.15%–5.15%</td><td className="text-right">12.4–15.3</td><td className="text-right">13.7</td></tr>
+                <tr><td>Montréal</td><td className="text-right">4.25%–4.50%</td><td className="text-right">14.2–15.0</td><td className="text-right">14.6</td></tr>
+                <tr><td>Vancouver</td><td className="text-right">3.75%–4.75%</td><td className="text-right">13.4–17.0</td><td className="text-right">15.0</td></tr>
+              </tbody>
+            </table>
+          </TableWrap>
+          <p>
+            What that means in dollars: a building with the same $168,000 of rent would price at roughly $2.03
+            million at Calgary’s midpoint, $2.30 million in Toronto, $2.45 million in Montréal and $2.52 million in
+            Vancouver. That is about $490,000 more in Vancouver for identical rent.
+          </p>
+          <p>
+            <strong>Treat these as a guide, not a quote.</strong> The 63.7% assumption matters. If a building keeps only
+            55% of its rent as NOI (heat included in rent, older plant, high taxes), every GRM above drops by about
+            14%; at 70% it rises by about 10%. Calgary’s range then runs from 10.0 to 14.0 on the same cap rates. A
+            building’s own expenses move its GRM more than the city does at the edges, so always compare against recent
+            sales of similar buildings.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'grm-toronto',
+      title: 'What is a good GRM in Toronto?',
+      body: (
+        <>
+          <p>
+            <strong>
+              In Toronto, a multiplex GRM of about 12 to 15 is implied by CBRE’s Q2 2026 cap rates, with roughly 14 at
+              the midpoint, and anything under 12 is a deal worth checking.
+            </strong>{' '}
+            CBRE’s low-rise Class B cap rates of 4.15% to 5.15% convert to a GRM of 12.4 to 15.3 at a 63.7%
+            NOI-to-rent ratio.
+          </p>
+          <p>
+            The width of the range is the point. The low end is typically a building with below-market rents, a
+            suburban location or work needed. The high end is a well-located building where buyers pay up for
+            rent-growth potential. A $2.3 million Toronto 8-plex at $168,000 of rent has a GRM of 13.7, in line with
+            the market. At $2.7 million it has a GRM of 16.1, and the price has to be justified by something the rent
+            roll doesn’t yet show.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'grm-vancouver',
+      title: 'What is a good GRM in Vancouver?',
+      body: (
+        <>
+          <p>
+            <strong>
+              In Vancouver, a multiplex GRM of 13 to 17 is implied, the highest of the four cities, and a GRM near 13
+              is the bargain end of the range.
+            </strong>{' '}
+            CBRE’s Q2 2026 cap rates of 3.75% to 4.75% imply 13.4 to 17.0 at a 63.7% NOI-to-rent ratio, with a midpoint
+            of about 15.
+          </p>
+          <p>
+            Because the multiple is already high, the gap between a fair price and a stretch is wide: at $168,000 of
+            rent, 13.4 is $2.25 million and 17.0 is $2.86 million, a difference of over $600,000. Vancouver buyers
+            are underwriting land value and long-term rent growth as much as today’s income, so DSCR often decides the
+            offer. At a 15 GRM (a 4.25% cap rate), the NOI covers only about 0.8 times the payments on a 75% loan at
+            4.9% over 25 years, so expect a larger down payment than the bank’s loan-to-value limit suggests. Check it
+            against the <Link href="/learn/what-is-dscr">DSCR math</Link>.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'grm-calgary',
+      title: 'What is a good GRM in Calgary?',
+      body: (
+        <>
+          <p>
+            <strong>
+              In Calgary, a multiplex GRM of about 11.6 to 12.7 is implied, the lowest of the four cities, and a GRM
+              under 11.5 deserves a closer look.
+            </strong>{' '}
+            CBRE’s Q2 2026 cap rates of 5.00% to 5.50% imply a GRM of 11.6 to 12.7, with a midpoint near 12.
+          </p>
+          <p>
+            Calgary’s lower multiple comes with a trade-off: income, not appreciation, is the pitch, so the rent roll
+            has to be solid. According to Yardi data reported by REMI Network, Calgary ended Q2 2026 with the highest
+            average rental vacancy of the major markets, at 6.8%, and was the only one to record a year-over-year drop
+            in average rent. A low GRM based on rents that are softening is cheaper on paper than in practice, so
+            underwrite with a higher vacancy allowance than you would in Vancouver, where the same data showed 4.2%.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'grm-montreal',
+      title: 'What is a good GRM in Montréal?',
+      body: (
+        <>
+          <p>
+            <strong>
+              In Montréal, a multiplex GRM of about 14 to 15 is implied by CBRE’s Q2 2026 cap rates, close to
+              Vancouver’s.
+            </strong>{' '}
+            CBRE’s Q2 2026 cap rates of 4.25% to 4.50% are a narrow band, and they convert to a GRM of 14.2 to 15.0.
+          </p>
+          <p>
+            Most Montréal plexes are two to five units and are priced off local sold comparables, so check any
+            multiple against recent Centris sales before you rely on it. Two cautions apply. Where the owner pays for
+            heat, or taxes are high relative to rent, the NOI-to-rent ratio falls, so a GRM of 14 can mean a thinner
+            cap rate than it would elsewhere. And if in-place rents lag the market, today’s GRM overstates what you
+            are really paying. Confirm both from the leases and the actual bills.
           </p>
         </>
       ),
@@ -193,32 +380,6 @@ export const grossRentMultiplierArticle: LearnArticle = {
       ),
     },
     {
-      id: 'good-grm',
-      title: 'What is a good GRM?',
-      body: (
-        <>
-          <p>
-            <strong>
-              A good GRM is one at or below what comparable buildings in the same market sell for. There is no single
-              Canadian number, because GRMs vary widely by city and building type.
-            </strong>{' '}
-            Markets with low cap rates, such as Vancouver and Toronto, have high GRMs; markets with higher cap rates
-            have lower ones.
-          </p>
-          <p>
-            Rules of thumb such as “under 10 is good” come from markets and eras with higher cap rates. Applied to a
-            city where buildings trade at a 4.5% cap rate, they would rule out almost every listing. A better approach
-            is to work out the GRM of recent sales of similar buildings nearby and compare against that.
-          </p>
-          <p>
-            A low GRM is not automatically a bargain. It can mean high expenses, an older building that needs work,
-            weak demand or rents that are unusually high and may not last. Always ask why a building is cheaper per
-            dollar of rent than its neighbours.
-          </p>
-        </>
-      ),
-    },
-    {
       id: 'rent-increases',
       title: 'Using GRM to value a rent increase',
       body: (
@@ -265,6 +426,36 @@ export const grossRentMultiplierArticle: LearnArticle = {
   ],
   faqs: [
     {
+      question: 'What is a good gross rent multiplier?',
+      answer:
+        'There is no single good GRM, because it depends on the city. A lower GRM is better for a buyer. Based on CBRE’s Q2 2026 low-rise Class B cap rates, implied multiplex GRMs are about 12 in Calgary, 14 in Toronto, 15 in Montréal and 15 in Vancouver.',
+    },
+    {
+      question: 'What is a good GRM in Toronto?',
+      answer:
+        'Roughly 12 to 15 for a multiplex in 2026, with a midpoint near 14, derived from CBRE’s Q2 2026 low-rise Class B cap rates of 4.15% to 5.15%, assuming NOI is about 64% of gross rent. A GRM under 12 is cheap for Toronto and worth checking for problems.',
+    },
+    {
+      question: 'What is a good GRM in Vancouver?',
+      answer:
+        'About 13 to 17, with a midpoint near 15. Vancouver’s Q2 2026 low-rise cap rates of 3.75% to 4.75% (CBRE) are the lowest of the four big cities, so its multiples are the highest.',
+    },
+    {
+      question: 'What is a good GRM in Calgary?',
+      answer:
+        'About 11.6 to 12.7, with a midpoint near 12. Calgary’s cap rates of 5.00% to 5.50% (CBRE, Q2 2026) are the highest of the four big cities, so its multiples are the lowest.',
+    },
+    {
+      question: 'What is a good GRM in Montréal?',
+      answer:
+        'About 14 to 15 for a multiplex, based on CBRE’s Q2 2026 cap rates of 4.25% to 4.50%. Check who pays for heating and what the property taxes are, since both change how much of the rent becomes NOI.',
+    },
+    {
+      question: 'Why is GRM higher in Toronto and Vancouver?',
+      answer:
+        'Buyers pay more per dollar of rent where land is expensive and demand is strong, which pushes cap rates down and GRM up.',
+    },
+    {
       question: 'Is a higher or lower GRM better?',
       answer:
         'For a buyer, lower is generally better: you pay less for each dollar of rent. But a low GRM can reflect high expenses, an older building or weak demand, so compare against similar buildings and check NOI before deciding.',
@@ -291,6 +482,16 @@ export const grossRentMultiplierArticle: LearnArticle = {
     },
   ],
   sources: [
+    {
+      title: 'Canadian Cap Rates & Investment Insights, Q2 2026',
+      publisher: 'CBRE (July 2026)',
+      url: 'https://www.cbre.ca/insights/reports/canada-cap-rates-investment-insights-q2-2026',
+    },
+    {
+      title: 'Multifamily rent growth rests on renewals',
+      publisher: 'REMI Network (Yardi data, Q2 2026)',
+      url: 'https://www.reminetwork.com/articles/multifamily-rent-growth-rests-on-renewals/',
+    },
     {
       title: 'Lesson 9: Multipliers, Derivation and Valuation (The Income Approach to Value)',
       publisher: 'California State Board of Equalization',
